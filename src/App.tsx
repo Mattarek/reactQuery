@@ -2,10 +2,8 @@ import { useQuery } from 'react-query';
 import './App.css';
 
 interface ApiData {
-    userId: number;
     id: number;
     title: string;
-    completed: boolean;
 }
 
 function App() {
@@ -19,10 +17,9 @@ function App() {
 
     return (
         <>
-            {data &&
-                data.map((todo) => {
-                    return <div key={todo.id}>{todo.title}</div>;
-                })}
+            {data?.map(({ id, title }: ApiData) => {
+                return <div key={id}>{title}</div>;
+            })}
         </>
     );
 }
