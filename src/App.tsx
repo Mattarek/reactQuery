@@ -7,7 +7,7 @@ interface ApiData {
 }
 
 function App() {
-    const { data } = useQuery({
+    const { data, error, isLoading } = useQuery({
         queryKey: ['todo'],
         queryFn: () =>
             fetch('https://jsonplaceholder.typicode.com/todos').then((res) =>
@@ -15,6 +15,8 @@ function App() {
             ),
     });
 
+    if (error) return <div>There was an error!</div>;
+    if (isLoading) return <div>Loading...</div>;
     return (
         <>
             {data?.map(({ id, title }: ApiData) => {
