@@ -36,6 +36,7 @@ function App() {
     if (isLoading) return <div>Loading...</div>;
     return (
         <>
+            <p>Data is being added</p>
             {isPending && <h1>Data is being added...</h1>}
             <button onClick={() => mutate({ id: 1, title: 'Do Laundry' })}>
                 Add post
